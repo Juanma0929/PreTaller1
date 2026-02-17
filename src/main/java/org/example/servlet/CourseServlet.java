@@ -38,8 +38,16 @@ public class CourseServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        InputStream is = getClass().getResourceAsStream("/courses.html");
+        InputStream is = getClass().getClassLoader().getResourceAsStream("/courses.html");
         String content = new String(is.readAllBytes());
+
+        StringBuilder coursesHtmlSb = new StringBuilder();
+        for(Course course : courseService.getCoursesList()) {
+            coursesHtmlSb.append("<li>"+course.getName()+"</li>");
+        }
+
+
+        content = content.replace("$courses",coursesHtmlSb.toString());
         resp.getWriter().println(content);
 
     }
