@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Crear el bean para el MessagesRepository y guardar los mensajes -->
+
+    <!-- Repositories -->
+    <!-- El init-method se ejecuta después de que el bean ha sido creado,
+     es decir, después de que se ha llamado al constructor -->
+    <bean id="courseRepository" class="org.example.repository.CourseRepository"
+    init-method="init"/>
+
+    <!-- Un bean es una instancia de un ioc container, al que todos los servidores que quiera
+     pueden acceder-->
+    <!-- Recursos lógicos que resuelven problemas, dependiendo de su responsabilidad-->
+
+    <!-- Una clase sencilla que crea varios objetos, no es elegible para ser bean,
+     ya que los bean son instancias únicas y estáticas, que no son duplicables-->
+
+    <!--Services-->
+    <bean id="courseService" class="org.example.service.CourseService">
+        <!-- Inyección de dependencias por constructor -->
+        <!-- Si tengo más de una dependencia, se pueden agregar más constructor-arg -->
+        <constructor-arg ref="courseRepository"/>
+    </bean>
+
+
+
+</beans>
