@@ -72,8 +72,7 @@ public class Course {
             Course other = (Course) obj;
             //Si el id es igual, entonces los cursos son iguales
             return
-                    other.getId() == this.getId() &&
-                    other.getName().equals(this.getName());
+                    other.getId() == this.getId();
         }else return false;
     }
 }
