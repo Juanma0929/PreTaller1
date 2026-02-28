@@ -9,7 +9,7 @@
     <!-- Repositories -->
     <!-- El init-method se ejecuta después de que el bean ha sido creado,
      es decir, después de que se ha llamado al constructor -->
-    <bean id="courseRepository" class="org.example.repository.CourseRepository"
+    <bean id="courseRepositoryImpl" class="org.example.repository.impl.CourseRepositoryImpl"
     init-method="init"/>
 
     <!-- Un bean es una instancia de un ioc container, al que todos los servidores que quiera
@@ -20,10 +20,10 @@
      ya que los bean son instancias únicas y estáticas, que no son duplicables-->
 
     <!--Services-->
-    <bean id="courseService" class="org.example.service.CourseService">
+    <bean id="courseService" class="org.example.service.impl.CourseServiceImpl">
         <!-- Inyección de dependencias por constructor -->
         <!-- Si tengo más de una dependencia, se pueden agregar más constructor-arg -->
-        <constructor-arg ref="courseRepository"/>
+        <constructor-arg ref="courseRepositoryImpl"/>
     </bean>
 
 

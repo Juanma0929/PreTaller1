@@ -1,7 +1,7 @@
 package org.example.service;
 
 import org.example.entity.Student;
-import org.example.repository.CourseRepository;
+import org.example.repository.impl.CourseRepositoryImpl;
 import org.example.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
@@ -9,12 +9,12 @@ import java.util.List;
 
 @Service
 public class StudentService {
-    private CourseRepository courseRepository;
+    private CourseRepositoryImpl courseRepositoryImpl;
     private StudentRepository studentRepository;
 
-    public StudentService(CourseRepository courseRepository,
+    public StudentService(CourseRepositoryImpl courseRepositoryImpl,
                           StudentRepository studentRepository) {
-        this.courseRepository = courseRepository;
+        this.courseRepositoryImpl = courseRepositoryImpl;
         this.studentRepository = studentRepository;
     }
 

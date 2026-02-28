@@ -1,45 +1,15 @@
 package org.example.repository;
 
-import jakarta.annotation.PostConstruct;
 import org.example.entity.Course;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
-//Cualquier operación de CRUD (Create, Read, Update, Delete)
-// se realiza en el repositorio
-@Repository
-public class CourseRepository {
+public interface CourseRepository {
+    //Guardamos los métodos que se van a implementar en el repositorio de cursos
+    //No se guarda el init, ya que para los beans existen distintos tipos de
+    //inicialización
+    void save(Course course);
+    boolean exists(Course course);
+    ArrayList<Course> getCourses();
 
-    private ArrayList<Course> courses = new ArrayList<>();
-
-    public CourseRepository() {}
-
-    public void save(Course course) {
-        courses.add(course);
-        System.out.println("Courses: "+courses.size());
-    }
-    public ArrayList<Course> getCourses() {
-        return courses;
-    }
-
-    //Funciona con el equals de course
-    public boolean exists(Course course) {
-        return courses.contains(course);
-    }
-
-    //Crear elementos de prueba en el repositorio
-    @PostConstruct
-    private void init(){
-        System.out.println("Initializing courses");
-        courses.add(new Course(1,
-                "Computación II",
-                "Kevin",
-                "Miercoles"));
-
-        courses.add(new Course(2,
-                "Estructura de Datos",
-                "Kevin 2",
-                "Lunes"));
-    }
 }

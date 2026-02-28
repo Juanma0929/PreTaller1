@@ -52,8 +52,10 @@ public class CourseServlet extends HttpServlet {
 
     }
 
+
+
     @Override
     public void init(ServletConfig config) throws ServletException {
-        courseService = (CourseService) AppContext.getContext().getBean("courseService");
+        courseService = (CourseService) AppContext.getContext().getBean("courseServiceImpl");
     }
 }
